@@ -24,9 +24,9 @@
 
     <section id="order">
         <h2>Place an Order</h2>
-        <form id="orderForm">
-            <label for="name">Name or Alias:</label>
-            <input type="text" id="name" name="name" required>
+        <form id="orderForm" action="/api/contact" method="post">
+            <label for="orderName">Name or Alias:</label>
+            <input type="text" id="orderName" name="name" required>
 
             <label for="address">Address to be Delivered To:</label>
             <input type="text" id="address" name="address" required>
