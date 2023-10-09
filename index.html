@@ -22,13 +22,13 @@
 
     <section id="order">
         <h2>Place an Order</h2>
-        <form id="orderForm" action="/api/order" method="post">
+        <form id="orderForm" action="/api/contact" method="post">
             <label for="orderName">Name or Alias:</label>
             <input type="text" id="orderName" name="orderName" required>
-
+    
             <label for="address">Address to be Delivered To:</label>
             <input type="text" id="address" name="address" required>
-
+    
             <label for="paymentMethod">Payment Method:</label>
             <select id="paymentMethod" name="paymentMethod">
                 <option value="card">Card</option>
@@ -36,12 +36,12 @@
                 <option value="zelle">Zelle</option>
                 <option value="cash">Cash</option>
             </select>
-
+    
             <input type="text" id="paymentDetails" name="paymentDetails" placeholder="Enter payment details" required>
-
+    
             <input type="submit" value="Place Order">
         </form>
-    </section>
+    </section>    
 
     <section id="contact">
         <h2>Contact Us</h2>
