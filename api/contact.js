@@ -1,7 +1,12 @@
 const axios = require('axios');
 
 module.exports = async (req, res) => {
-    const { orderName, address, paymentMethod, paymentDetails, treeSelection, name, message } = req.body;
+    let { orderName, address, paymentMethod, paymentDetails, treeSelection, name, message } = req.body;
+
+    // Check if treeSelection is an array and join it into a string
+    if (Array.isArray(treeSelection)) {
+        treeSelection = treeSelection.join(', ');
+    }
 
     const TELEGRAM_TOKEN = '6338711548:AAHAdZ3MnM7M9IMTIEkC5Y-aoq-SvJNEx_s';
     const TELEGRAM_CHAT_ID = '6683416611';
