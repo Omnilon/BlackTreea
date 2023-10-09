@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tree Selling App</title>
     <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Georgia&display=swap" rel="stylesheet"> <!-- Google Font for sleek headings -->
 </head>
 <body>
     <header>
@@ -13,10 +12,10 @@
     </header>
 
     <nav>
-        <a href="#" onclick="showSection('menu')">The Menu</a> | <a href="#" onclick="showSection('order')">Place an Order</a> | <a href="#" onclick="showSection('contact')">Contact Us</a>
+        <a href="#menu">The Menu</a> | <a href="#order">Place an Order</a>
     </nav>
 
-    <section id="menu" class="active">
+    <section id="menu">
         <h2>The Menu</h2>
         <p>Here you can view the different types of trees we have available for sale.</p>
         <!-- You can list your trees here. -->
@@ -27,10 +26,10 @@
         <form id="orderForm" action="/api/order" method="post">
             <label for="orderName">Name or Alias:</label>
             <input type="text" id="orderName" name="orderName" required>
-    
+
             <label for="address">Address to be Delivered To:</label>
             <input type="text" id="address" name="address" required>
-    
+
             <label for="paymentMethod">Payment Method:</label>
             <select id="paymentMethod" name="paymentMethod">
                 <option value="card">Card</option>
@@ -38,32 +37,18 @@
                 <option value="zelle">Zelle</option>
                 <option value="cash">Cash</option>
             </select>
-    
+
             <input type="text" id="paymentDetails" name="paymentDetails" placeholder="Enter payment details" required>
-    
+
             <input type="submit" value="Place Order">
         </form>
     </section>
-    
+
     <section id="contact">
         <h2>Contact Us</h2>
         <form id="contactForm" action="/api/contact" method="post">
             <label for="contactName">Name:</label>
             <input type="text" id="contactName" name="contactName" required>
-    
-            <label for="message">Message:</label>
-            <textarea id="message" name="message" required></textarea>
-    
-            <input type="submit" value="Send Message">
-        </form>
-    </section>
-    
-
-    <section id="contact">
-        <h2>Contact Us</h2>
-        <form id="contactForm" action="/api/contact" method="post">
-            <label for="contactName">Name:</label>
-            <input type="text" id="contactName" name="name" required>
 
             <label for="message">Message:</label>
             <textarea id="message" name="message" required></textarea>
@@ -72,17 +57,6 @@
         </form>
     </section>
 
-    <script>
-        function showSection(id) {
-            // Hide all sections
-            document.querySelectorAll('section').forEach(section => {
-                section.classList.remove('active');
-            });
-
-            // Show the selected section
-            document.getElementById(id).classList.add('active');
-        }
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
-
