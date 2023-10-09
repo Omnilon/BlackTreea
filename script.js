@@ -19,7 +19,13 @@ document.addEventListener('DOMContentLoaded', function() {
     fetch('/cutOffTime.json')
         .then(response => response.json())
         .then(data => {
-            document.getElementById('cutOffTime').textContent = data.time;
-        }); // Added the missing closing parenthesis here
-
-}); // Added the missing closing curly brace here
+            // Convert 24-hour format to 12-hour format
+            let [hours, minutes] = data.time.split(':');
+            hours = parseInt(hours);
+            const ampm = hours >= 12 ? 'PM' : 'AM';
+            hours = hours % 12;
+            hours = hours ? hours : 12; // the hour '0' should be '12'
+            const displayTime = hours + ':' + minutes + ' ' + ampm;
+            document.getElementById('cutOffTime').textContent = displayTime;
+        });
+});
