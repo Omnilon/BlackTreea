@@ -26,19 +26,24 @@ module.exports = async (req, res) => {
         "Maple": 55
     };
 
-    if (orderName && address && paymentMethod && paymentDetails && treeSelection) {
-        let total = 0;
-        treeSelection.forEach(tree => {
-            let treeName = tree.split(' - ')[0];
-            total += treePrices[treeName];
-        });
-        text = `New Order:\nIG Name or Alias: ${orderName}\nAddress: ${address}\nTree(s) From the Menu: ${treeSelection.join(', ')}\nTotal Price: $${total}\nPayment Method: ${paymentMethod}\nPayment Details: ${paymentDetails}`;
-    } else if (name && message) {
-        text = `New Contact Message:\nName: ${name}\nMessage: ${message}`;
-    } else {
-        res.status(400).send('Invalid form submission.');
-        return;
-    }
+// ...
+
+if (igName && address && paymentMethod && paymentDetails && treeSelection) {
+    let total = 0;
+    treeSelection.forEach(tree => {
+        let treeName = tree.split(' - ')[0];
+        total += treePrices[treeName];
+    });
+    text = `New Order:\nIG Name or Alias: ${igName}\nPhone Number: ${phoneNumber}\nAddress: ${address}\nMailbox Dropoff: ${mailboxDropoff ? 'Yes' : 'No'}\nTree(s) From the Menu: ${treeSelection.join(', ')}\nTotal Price: $${total}\nPayment Method: ${paymentMethod}\nPayment Details: ${paymentDetails}`;
+} else if (name && message) {
+    text = `New Contact Message:\nName: ${name}\nMessage: ${message}`;
+} else {
+    res.status(400).send('Invalid form submission.');
+    return;
+}
+
+// ...
+
 
     try {
         await axios.post(`https://api.telegram.org/bot${TELEGRAM_TOKEN}/sendMessage`, {
