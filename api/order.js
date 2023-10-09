@@ -6,6 +6,15 @@ module.exports = async (req, res) => {
     const TELEGRAM_TOKEN = '6501676804:AAEOKcy_JfF-W7IxXZyT8k5Qvn7zyHiHptc';
     const TELEGRAM_CHAT_ID = '1055897795';
 
+    console.log("Before conversion: ", typeof treeSelection, treeSelection);
+
+    // Ensure treeSelection is always an array
+    if (!Array.isArray(treeSelection)) {
+        treeSelection = [treeSelection];
+    }
+
+    console.log("After conversion: ", typeof treeSelection, treeSelection);
+
     let text = '';
     const treePrices = {
         "Oak": 50,
@@ -13,11 +22,6 @@ module.exports = async (req, res) => {
         "Birch": 45,
         "Maple": 55
     };
-
-    // Ensure treeSelection is always an array
-    if (!Array.isArray(treeSelection)) {
-        treeSelection = [treeSelection];
-    }
 
     if (orderName && address && paymentMethod && paymentDetails && treeSelection) {
         let total = 0;
