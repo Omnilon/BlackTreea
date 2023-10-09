@@ -1,34 +1,33 @@
 const axios = require('axios');
 
 module.exports = async (req, res) => {
-    const { igName, phoneNumber, address, mailboxDropoff, paymentMethod, paymentDetails, treeSelection } = req.body;
+    let { orderName, address, paymentMethod, paymentDetails, treeSelection, name, message } = req.body;
 
     const TELEGRAM_TOKEN = '6501676804:AAEOKcy_JfF-W7IxXZyT8k5Qvn7zyHiHptc';
     const TELEGRAM_CHAT_ID = '1055897795';
 
+    let text = '';
     const treePrices = {
-        "Oak - $10": 10,
-        "Pine - $15": 15,
-        "Birch - $20": 20,
-        "Maple - $25": 25
+        "Oak": 50,
+        "Pine": 40,
+        "Birch": 45,
+        "Maple": 55
     };
 
-    let text = '';
+    // Ensure treeSelection is always an array
+    if (!Array.isArray(treeSelection)) {
+        treeSelection = [treeSelection];
+    }
 
-    if (igName && phoneNumber && address && paymentMethod && paymentDetails && treeSelection) {
+    if (orderName && address && paymentMethod && paymentDetails && treeSelection) {
         let total = 0;
         treeSelection.forEach(tree => {
-            total += treePrices[tree];
+            let treeName = tree.split(' - ')[0];
+            total += treePrices[treeName];
         });
-        text = `New Order:
-IG Name or Alias: ${igName}
-Phone Number: ${phoneNumber}
-Address: ${address}
-Mailbox Dropoff: ${mailboxDropoff ? 'Yes' : 'No'}
-Tree(s) From the Menu: ${treeSelection.join(', ')}
-Total Price: $${total}
-Payment Method: ${paymentMethod}
-Payment Details: ${paymentDetails}`;
+        text = `New Order:\nIG Name or Alias: ${orderName}\nAddress: ${address}\nTree(s) From the Menu: ${treeSelection.join(', ')}\nTotal Price: $${total}\nPayment Method: ${paymentMethod}\nPayment Details: ${paymentDetails}`;
+    } else if (name && message) {
+        text = `New Contact Message:\nName: ${name}\nMessage: ${message}`;
     } else {
         res.status(400).send('Invalid form submission.');
         return;
