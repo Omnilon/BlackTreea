@@ -15,4 +15,11 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         totalPrice.textContent = "Total: $" + total;
     });
-});
+
+    fetch('/cutOffTime.json')
+        .then(response => response.json())
+        .then(data => {
+            document.getElementById('cutOffTime').textContent = data.time;
+        }); // Added the missing closing parenthesis here
+
+}); // Added the missing closing curly brace here

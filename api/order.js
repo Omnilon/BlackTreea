@@ -1,4 +1,5 @@
 const axios = require('axios');
+const cutOffTime = require('../cutOffTime.json'); // Assuming your order.js is inside an 'api' folder
 
 module.exports = async (req, res) => {
     let { igName, phoneNumber, address, mailboxDropoff, paymentMethod, paymentDetails, treeSelection, name, message } = req.body;
@@ -15,9 +16,6 @@ module.exports = async (req, res) => {
 
     console.log("After conversion: ", typeof treeSelection, treeSelection);
 
-    // ... (rest of the code)
-
-
     let text = '';
     const treePrices = {
         "Oak": 50,
@@ -26,24 +24,27 @@ module.exports = async (req, res) => {
         "Maple": 55
     };
 
-// ...
+    let afterCutOff = false;
+    if (new Date().getHours() * 60 + new Date().getMinutes() > parseInt(cutOffTime.time.split(':')[0]) * 60 + parseInt(cutOffTime.time.split(':')[1])) {
+        afterCutOff = true;
+    }
 
-if (igName && address && paymentMethod && paymentDetails && treeSelection) {
-    let total = 0;
-    treeSelection.forEach(tree => {
-        let treeName = tree.split(' - ')[0];
-        total += treePrices[treeName];
-    });
-    text = `New Order:\nIG Name or Alias: ${igName}\nPhone Number: ${phoneNumber}\nAddress: ${address}\nMailbox Dropoff: ${mailboxDropoff ? 'Yes' : 'No'}\nTree(s) From the Menu: ${treeSelection.join(', ')}\nTotal Price: $${total}\nPayment Method: ${paymentMethod}\nPayment Details: ${paymentDetails}`;
-} else if (name && message) {
-    text = `New Contact Message:\nName: ${name}\nMessage: ${message}`;
-} else {
-    res.status(400).send('Invalid form submission.');
-    return;
-}
-
-// ...
-
+    if (igName && address && paymentMethod && paymentDetails && treeSelection) {
+        let total = 0;
+        treeSelection.forEach(tree => {
+            let treeName = tree.split(' - ')[0];
+            total += treePrices[treeName];
+        });
+        text = `New Order:\nIG Name or Alias: ${igName}\nPhone Number: ${phoneNumber}\nAddress: ${address}\nMailbox Dropoff: ${mailboxDropoff ? 'Yes' : 'No'}\nTree(s) From the Menu: ${treeSelection.join(', ')}\nTotal Price: $${total}\nPayment Method: ${paymentMethod}\nPayment Details: ${paymentDetails}`;
+        if (afterCutOff) {
+            text += "\n\nNote: This order has been made after the cut-off time!";
+        }
+    } else if (name && message) {
+        text = `New Contact Message:\nName: ${name}\nMessage: ${message}`;
+    } else {
+        res.status(400).send('Invalid form submission.');
+        return;
+    }
 
     try {
         await axios.post(`https://api.telegram.org/bot${TELEGRAM_TOKEN}/sendMessage`, {
