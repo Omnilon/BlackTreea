@@ -23,35 +23,43 @@
     <section id="order">
         <h2>Place an Order</h2>
         <form id="orderForm" action="/api/order" method="post">
-            <label for="orderName">Name or Alias:</label>
-            <input type="text" id="orderName" name="orderName" required>
+            <label for="igName">IG Name or Alias:</label>
+            <input type="text" id="igName" name="igName" required>
+    
+            <label for="phoneNumber">Phone Number:</label>
+            <input type="tel" id="phoneNumber" name="phoneNumber" required>
     
             <label for="address">Address to be Delivered To:</label>
             <input type="text" id="address" name="address" required>
+            <input type="checkbox" id="mailboxDropoff" name="mailboxDropoff">
+            <label for="mailboxDropoff">Mailbox Dropoff?</label>
     
-            <label for="treeSelection">Tree(s) From the Menu (hold Ctrl/Cmd to select multiple):</label>
-            <select id="treeSelection" name="treeSelection" multiple>
-                <option value="Oak - $50">Oak - $50</option>
-                <option value="Pine - $40">Pine - $40</option>
-                <option value="Birch - $45">Birch - $45</option>
-                <option value="Maple - $55">Maple - $55</option>
+            <label for="treeSelection">Tree(s) From the Menu:</label>
+            <select id="treeSelection" name="treeSelection" multiple size="4">
+                <option value="Oak - $10">Oak - $10</option>
+                <option value="Pine - $15">Pine - $15</option>
+                <option value="Birch - $20">Birch - $20</option>
+                <option value="Maple - $25">Maple - $25</option>
             </select>
+    
+            <p id="totalPrice">Total Price: $0</p>
     
             <label for="paymentMethod">Payment Method:</label>
             <select id="paymentMethod" name="paymentMethod">
-                <option value="card">Card</option>
                 <option value="cashapp">Cash App</option>
                 <option value="zelle">Zelle</option>
+                <option value="applepay">Apple Pay</option>
                 <option value="cash">Cash</option>
             </select>
     
-            <input type="text" id="paymentDetails" name="paymentDetails" placeholder="Enter payment details" required>
+            <p>All electronic transfers will be made by request and all payments must be made before delivery. If for whatever reason a delivery is not completed, you will be entitled to a full refund.</p>
     
-            <p id="totalPrice">Total: $0</p>
+            <input type="text" id="paymentDetails" name="paymentDetails" placeholder="Enter payment details" required>
     
             <input type="submit" value="Place Order">
         </form>
     </section>
+    
            
 
     <section id="contact">
