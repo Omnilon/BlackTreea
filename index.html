@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tree Selling App</title>
     <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Georgia&display=swap" rel="stylesheet"> <!-- Google Font for sleek headings -->
 </head>
 <body>
     <header>
@@ -12,10 +13,10 @@
     </header>
 
     <nav>
-        <a href="#menu">The Menu</a> | <a href="#order">Place an Order</a>
+        <a href="#" onclick="showSection('menu')">The Menu</a> | <a href="#" onclick="showSection('order')">Place an Order</a> | <a href="#" onclick="showSection('contact')">Contact Us</a>
     </nav>
 
-    <section id="menu">
+    <section id="menu" class="active">
         <h2>The Menu</h2>
         <p>Here you can view the different types of trees we have available for sale.</p>
         <!-- You can list your trees here. -->
@@ -23,9 +24,9 @@
 
     <section id="order">
         <h2>Place an Order</h2>
-        <form id="orderForm" action="/api/contact" method="post">
-            <label for="orderName">Name or Alias:</label>
-            <input type="text" id="orderName" name="orderName" required>
+        <form id="orderForm">
+            <label for="name">Name or Alias:</label>
+            <input type="text" id="name" name="name" required>
 
             <label for="address">Address to be Delivered To:</label>
             <input type="text" id="address" name="address" required>
@@ -47,8 +48,8 @@
     <section id="contact">
         <h2>Contact Us</h2>
         <form id="contactForm" action="/api/contact" method="post">
-            <label for="name">Name:</label>
-            <input type="text" id="name" name="name" required>
+            <label for="contactName">Name:</label>
+            <input type="text" id="contactName" name="name" required>
 
             <label for="message">Message:</label>
             <textarea id="message" name="message" required></textarea>
@@ -57,7 +58,17 @@
         </form>
     </section>
 
-    <script src="script.js"></script>
+    <script>
+        function showSection(id) {
+            // Hide all sections
+            document.querySelectorAll('section').forEach(section => {
+                section.classList.remove('active');
+            });
+
+            // Show the selected section
+            document.getElementById(id).classList.add('active');
+        }
+    </script>
 </body>
 </html>
 
