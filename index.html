@@ -29,14 +29,27 @@
             <label for="address">Address to be Delivered To:</label>
             <input type="text" id="address" name="address" required>
     
-            <label for="treeSelection">Tree(s) From the Menu?</label>
-            <select id="treeSelection" name="treeSelection" multiple size="4">
-                <option value="oak">Oak</option>
-                <option value="pine">Pine</option>
-                <option value="maple">Maple</option>
-                <option value="cherry">Cherry</option>
-                <!-- Add more tree options as needed -->
-            </select>            
+            <label>Tree(s) From the Menu?</label>
+            <div>
+                <input type="checkbox" id="Oak" name="treeSelection[]" value="Oak">
+                <label for="Oak">Oak</label>
+            </div>
+            <div>
+                <input type="checkbox" id="Pine" name="treeSelection[]" value="Pine">
+                <label for="Pine">Pine</label>
+            </div>
+            <div>
+                <input type="checkbox" id="Birch" name="treeSelection[]" value="Birch">
+                <label for="Birch">Birch</label>
+            </div>
+            <div>
+                <input type="checkbox" id="Maple" name="treeSelection[]" value="Maple">
+                <label for="Maple">Maple</label>
+            </div>
+            <div>
+                <input type="checkbox" id="Redwood" name="treeSelection[]" value="Redwood">
+                <label for="Redwood">Redwood</label>
+            </div>                        
     
             <label for="paymentMethod">Payment Method:</label>
             <select id="paymentMethod" name="paymentMethod">
