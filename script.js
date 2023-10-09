@@ -16,16 +16,20 @@ document.addEventListener('DOMContentLoaded', function() {
         totalPrice.textContent = "Total: $" + total;
     });
 
-    fetch('/cutOffTime.json')
-        .then(response => response.json())
-        .then(data => {
-            // Convert 24-hour format to 12-hour format
-            let [hours, minutes] = data.time.split(':');
-            hours = parseInt(hours);
-            const ampm = hours >= 12 ? 'PM' : 'AM';
-            hours = hours % 12;
-            hours = hours ? hours : 12; // the hour '0' should be '12'
-            const displayTime = hours + ':' + minutes + ' ' + ampm;
-            document.getElementById('cutOffTime').textContent = displayTime;
-        });
+    // ... (rest of the code above)
+
+fetch('/cutOffTime.json')
+.then(response => response.json())
+.then(data => {
+    // Convert 24-hour format to 12-hour format
+    let [hours, minutes] = data.time.split(':');
+    hours = parseInt(hours);
+    const ampm = hours >= 12 ? 'PM' : 'AM';
+    hours = hours % 12;
+    hours = hours ? hours : 12; // the hour '0' should be '12'
+    const displayTime = hours + ':' + minutes + ' ' + ampm;
+    document.getElementById('cutOffTime').textContent = displayTime;
+});
+
+// ... (rest of the code below)
 });
