@@ -1,13 +1,14 @@
 body {
-    font-family: 'Arial', sans-serif;
+    font-family: 'Georgia', serif;
     background-color: #f4f4f4;
+    color: #333;
     margin: 0;
     padding: 0;
 }
 
 header {
     background-color: #333;
-    color: #fff;
+    color: #f4f4f4;
     text-align: center;
     padding: 1rem 0;
 }
@@ -20,40 +21,31 @@ nav {
 }
 
 nav a {
-    color: #fff;
+    color: #f4f4f4;
     margin: 0 1rem;
     text-decoration: none;
     transition: color 0.3s;
 }
 
 nav a:hover {
-    color: #a8df65; /* Earthy green */
+    color: #a8db34;
 }
 
 section {
-    display: none; /* Initially hide all sections */
+    display: none;
     padding: 2rem;
     background-color: #fff;
     margin: 1rem;
     border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 section.active {
-    display: block; /* Show the active section */
-}
-
-h1, h2 {
-    font-family: 'Georgia', serif; /* Sleek font for headings */
-}
-
-h1 {
-    font-size: 2.5rem;
+    display: block;
 }
 
 h2 {
-    font-size: 2rem;
-    color: #4b4b4b; /* Dark gray */
+    border-bottom: 2px solid #a8db34;
+    padding-bottom: 0.5rem;
 }
 
 form label, form input, form select, form textarea {
@@ -61,14 +53,15 @@ form label, form input, form select, form textarea {
     margin-bottom: 1rem;
 }
 
-form input[type="submit"] {
-    background-color: #a8df65; /* Earthy green */
+input[type="submit"] {
+    background-color: #a8db34;
+    color: #fff;
     border: none;
     padding: 0.5rem 1rem;
     cursor: pointer;
     transition: background-color 0.3s;
 }
 
-form input[type="submit"]:hover {
-    background-color: #86c04c; /* Slightly darker green on hover */
+input[type="submit"]:hover {
+    background-color: #8cb92a;
 }
