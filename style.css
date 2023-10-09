@@ -1,8 +1,9 @@
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color: #f4f4f4;
     margin: 0;
     padding: 0;
+    transition: background-color 0.3s;
 }
 
 header {
@@ -35,6 +36,7 @@ section {
     margin: 20px;
     background-color: white;
     border: 1px solid #ddd;
+    transition: border 0.3s;
 }
 
 h2 {
