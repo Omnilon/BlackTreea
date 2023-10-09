@@ -4,7 +4,7 @@ module.exports = async (req, res) => {
     const { name, message } = req.body;
 
     const TELEGRAM_TOKEN = '6338711548:AAHAdZ3MnM7M9IMTIEkC5Y-aoq-SvJNEx_s';
-    const TELEGRAM_CHAT_ID = '@BlackTreea';
+    const TELEGRAM_CHAT_ID = '6683416611';
 
     const text = `New Contact Message:\nName: ${name}\nMessage: ${message}`;
 
