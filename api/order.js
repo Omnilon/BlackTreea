@@ -1,5 +1,12 @@
 const axios = require('axios');
-const cutOffTime = require('../cutOffTime.json'); // Assuming your order.js is inside an 'api' folder
+const cutOffTime = require('../cutOffTime.json'); // Importing the cutOffTime.json file
+
+// Convert 12-hour format time to minutes since midnight
+function timeToMinutes(timeStr) {
+    const [hours, minutes] = timeStr.split(':').map(Number);
+    const isPM = timeStr.includes('PM');
+    return ((hours % 12) + (isPM ? 12 : 0)) * 60 + minutes;
+}
 
 module.exports = async (req, res) => {
     let { igName, phoneNumber, address, mailboxDropoff, paymentMethod, paymentDetails, treeSelection, name, message } = req.body;
@@ -24,10 +31,10 @@ module.exports = async (req, res) => {
         "Maple": 55
     };
 
-    let afterCutOff = false;
-    if (new Date().getHours() * 60 + new Date().getMinutes() > parseInt(cutOffTime.time.split(':')[0]) * 60 + parseInt(cutOffTime.time.split(':')[1])) {
-        afterCutOff = true;
-    }
+    const currentMinutes = new Date().getHours() * 60 + new Date().getMinutes();
+    const cutOffMinutes = timeToMinutes(cutOffTime.time); // Using the function to get cut-off minutes
+
+    let afterCutOff = currentMinutes > cutOffMinutes;
 
     if (igName && address && paymentMethod && paymentDetails && treeSelection) {
         let total = 0;
