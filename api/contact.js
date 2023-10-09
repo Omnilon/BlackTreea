@@ -3,8 +3,8 @@ const axios = require('axios');
 module.exports = async (req, res) => {
     const { orderName, address, paymentMethod, paymentDetails, treeSelection, name, message } = req.body;
 
-    const TELEGRAM_TOKEN = 'YOUR_TELEGRAM_TOKEN';
-    const TELEGRAM_CHAT_ID = 'YOUR_TELEGRAM_CHAT_ID';
+    const TELEGRAM_TOKEN = '6501676804:AAEOKcy_JfF-W7IxXZyT8k5Qvn7zyHiHptc';
+    const TELEGRAM_CHAT_ID = '1055897795';
 
     let text = '';
     const treePrices = {
