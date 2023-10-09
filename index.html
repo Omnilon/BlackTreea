@@ -22,34 +22,20 @@
 
     <section id="order">
         <h2>Place an Order</h2>
-        <form id="orderForm" action="/api/contact" method="post">
+        <form id="orderForm" action="/api/order" method="post">
             <label for="orderName">Name or Alias:</label>
             <input type="text" id="orderName" name="orderName" required>
     
             <label for="address">Address to be Delivered To:</label>
             <input type="text" id="address" name="address" required>
     
-            <label>Tree(s) From the Menu?</label>
-            <div>
-                <input type="checkbox" id="Oak" name="treeSelection[]" value="Oak">
-                <label for="Oak">Oak</label>
-            </div>
-            <div>
-                <input type="checkbox" id="Pine" name="treeSelection[]" value="Pine">
-                <label for="Pine">Pine</label>
-            </div>
-            <div>
-                <input type="checkbox" id="Birch" name="treeSelection[]" value="Birch">
-                <label for="Birch">Birch</label>
-            </div>
-            <div>
-                <input type="checkbox" id="Maple" name="treeSelection[]" value="Maple">
-                <label for="Maple">Maple</label>
-            </div>
-            <div>
-                <input type="checkbox" id="Redwood" name="treeSelection[]" value="Redwood">
-                <label for="Redwood">Redwood</label>
-            </div>                        
+            <label for="treeSelection">Tree(s) From the Menu (hold Ctrl/Cmd to select multiple):</label>
+            <select id="treeSelection" name="treeSelection" multiple>
+                <option value="Oak - $50">Oak - $50</option>
+                <option value="Pine - $40">Pine - $40</option>
+                <option value="Birch - $45">Birch - $45</option>
+                <option value="Maple - $55">Maple - $55</option>
+            </select>
     
             <label for="paymentMethod">Payment Method:</label>
             <select id="paymentMethod" name="paymentMethod">
@@ -61,9 +47,12 @@
     
             <input type="text" id="paymentDetails" name="paymentDetails" placeholder="Enter payment details" required>
     
+            <p id="totalPrice">Total: $0</p>
+    
             <input type="submit" value="Place Order">
         </form>
-    </section>        
+    </section>
+           
 
     <section id="contact">
         <h2>Contact Us</h2>
