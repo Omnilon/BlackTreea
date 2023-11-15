@@ -14,7 +14,7 @@ function timeToMinutes(timeStr) {
 module.exports = async (req, res) => {
     let { igName, phoneNumber, address, mailboxDropoff, paymentMethod, paymentDetails, customRequest, name, message } = req.body;
 
-    const TELEGRAM_TOKEN = '6913432492:AAGa29FveSNMA7VJ3WYL_4DQ8IhlCAHg6mY';
+    const TELEGRAM_TOKEN = '6913432492:AAGa29FveSNMA7VJ3WYl_4DQ8IhlCAHg6mY';
     const TELEGRAM_CHAT_ID = '6683416611';
 
     const currentMinutes = new Date().getHours() * 60 + new Date().getMinutes();
