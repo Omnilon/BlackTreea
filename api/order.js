@@ -15,7 +15,7 @@ module.exports = async (req, res) => {
     let { igName, phoneNumber, address, mailboxDropoff, paymentMethod, paymentDetails, customRequest, name, message } = req.body;
 
     const TELEGRAM_TOKEN = '6338711548:AAHAdZ3MnM7M9IMTIEkC5Y-aoq-SvJNEx_s';
-    const TELEGRAM_CHAT_ID = '@BlackTreea';
+    const TELEGRAM_CHAT_ID = '6683416611';
 
     const currentMinutes = new Date().getHours() * 60 + new Date().getMinutes();
     const cutOffMinutes = timeToMinutes(cutOffTime.time); // Using the function to get cut-off minutes
