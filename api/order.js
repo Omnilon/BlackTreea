@@ -52,7 +52,7 @@ module.exports = async (req, res) => {
         });
         console.log('Message sent to second account:', response2.data);
     
-        res.status(200).send('Message sent successfully to both accounts.');
+        res.status(200).send('Order Submitted.');
     } catch (error) {
         console.error('Error sending message to Telegram:', error.response ? error.response.data : error.message);
         res.status(500).send('Failed to send message.');
