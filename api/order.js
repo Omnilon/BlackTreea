@@ -38,13 +38,23 @@ module.exports = async (req, res) => {
     }
 
     try {
-        await axios.post(`https://api.telegram.org/bot${TELEGRAM_TOKEN}/sendMessage`, {
-            chat_id: TELEGRAM_CHAT_ID,
+        // Send message to the first Telegram account
+        const response1 = await axios.post(`https://api.telegram.org/bot${TELEGRAM_TOKEN}/sendMessage`, {
+            chat_id: TELEGRAM_CHAT_ID1,
             text: text
         });
-        res.status(200).send('Message sent successfully.');
+        console.log('Message sent to first account:', response1.data);
+    
+        // Send message to the second Telegram account
+        const response2 = await axios.post(`https://api.telegram.org/bot${TELEGRAM_TOKEN}/sendMessage`, {
+            chat_id: TELEGRAM_CHAT_ID2,
+            text: text
+        });
+        console.log('Message sent to second account:', response2.data);
+    
+        res.status(200).send('Message sent successfully to both accounts.');
     } catch (error) {
-        console.error('Error sending message to Telegram:', error);
+        console.error('Error sending message to Telegram:', error.response ? error.response.data : error.message);
         res.status(500).send('Failed to send message.');
     }
-};
+};    
