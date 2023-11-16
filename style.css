@@ -98,3 +98,8 @@ select[multiple] {
     overflow-y: auto;
     border-radius: 0.3125rem; /* Rounded corners */
 }
+#logo {
+    max-width: 100%; /* Ensure the image is never wider than its container */
+    height: auto; /* Maintain aspect ratio */
+    max-height: 150px; /* You can adjust this value as needed */
+}
