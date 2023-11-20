@@ -5,3 +5,5 @@ document.addEventListener('DOMContentLoaded', function() {
         document.getElementById('cutOffTime').textContent = data.time;
     });
 });
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4669381329390831"
+crossorigin="anonymous"></script>
